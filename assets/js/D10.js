@@ -609,20 +609,13 @@ halfTree(5);
 */
 console.log("--- ESERCIZIO EXTRA 28 ---");
 function tree(n) {
-  let str = "";
-  let str2 = "";
-  let str3 = "";
-  let num = n;
   for (let i = 0; i < n; i++) {
-    str += "*";
-    for (let c = 0; c < num - 1; c++) {
-      str2 += " ";
-      str3 = str2.concat(str);
-    }
-    console.log(str3);
+    let spazi = " ".repeat(n - i - 1);
+    let asterischi = "*".repeat(2 * i + 1);
+    console.log(spazi + asterischi);
   }
 }
-tree(3);
+tree(4);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
