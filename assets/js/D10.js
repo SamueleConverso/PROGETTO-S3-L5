@@ -324,7 +324,7 @@ function rollTheDices(n) {
 function howManyDays(dateParam) {
   let todayDate = new Date();
   let compareDate = new Date(dateParam);
-  let milliSec = todayDate - compareDate;
+  let milliSec = Math.abs(todayDate - compareDate);
   let days = Math.floor(milliSec / 1000 / 60 / 60 / 24);
   return days;
 }
@@ -403,14 +403,35 @@ function onlyTheYears() {
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
+function onlyInLastMillennium() {
+  const lastMillMoviesArr = movies.filter(
+    (elem) => parseInt(elem.Year) <= 2000
+  );
+  return lastMillMoviesArr;
+}
+//console.log(onlyInLastMillennium());
 
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
+function sumAllTheYears() {
+  return movies.reduce((tot, val) => tot + parseInt(val.Year), 0);
+}
+//console.log(sumAllTheYears());
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+function searchByTitle(str) {
+  let moviesByTitle = [];
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.toLowerCase().includes(str.toLowerCase())) {
+      moviesByTitle.push(movies[i]);
+    }
+  }
+  return moviesByTitle;
+}
+//console.log(searchByTitle("Lord"));
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
