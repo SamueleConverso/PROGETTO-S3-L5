@@ -438,15 +438,39 @@ function searchByTitle(str) {
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+function searchAndDivide(str) {
+  const matchArr = [];
+  const unmatchArr = [];
+  const obj = {};
+
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.toLowerCase().includes(str.toLowerCase())) {
+      matchArr.push(movies[i]);
+    } else {
+      unmatchArr.push(movies[i]);
+    }
+  }
+  obj.match = matchArr;
+  obj.unmatch = unmatchArr;
+  return obj;
+}
+//console.log(searchAndDivide("Lord"));
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+function removeIndex(n) {
+  movies.splice(n - 1, 1);
+  return movies;
+}
+//console.log(removeIndex(14));
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
 /* ESERCIZIO 20
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
+const container = document.getElementById("container");
 
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
